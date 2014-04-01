@@ -38,7 +38,7 @@
         </p>
 
         <form class="form-horizontal" role="form">
-        <div id="keygenform" class="form-group has-feedback">
+        <div id="passphraseform" class="form-group has-feedback">
         <div>
         	<p id="passphraseFeedback" class="help-block"></p>
         	<label class="control-label col-md-5" for="passphrase1">Enter passphrase:</label>
@@ -54,6 +54,8 @@
         	<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
         	</div>
         </div>
+        </div>
+        <div class="form-group">
         <div>
         	<label class="control-label col-md-5" for="keysize">Key size:</label>
         	<div class="col-md-6">
@@ -96,11 +98,11 @@ function validate() {
   var pp2 = document.getElementById('passphrase2').value;
   if (pp1.length < requiredLength || pp1 !== pp2) {
     document.getElementById("passphraseFeedback").innerHTML = "Passphrases must be at least " + requiredLength + " characters long, and match";
-    document.getElementById("keygenform").className = 'form-group has-error has-feedback';
+    document.getElementById("passphraseform").className = 'form-group has-error has-feedback';
     return false;
   } else {
     document.getElementById("passphraseFeedback").innerHTML = '';
-    document.getElementById("keygenform").className = 'form-group has-feedback';
+    document.getElementById("passphraseform").className = 'form-group has-feedback';
     return true;
   }
 }
