@@ -78,6 +78,24 @@ body {
   }
 }
 
+/* Make form look better */
+
+.jumbotron label, .jumbotron input  {
+    font-size: 20px;
+    font-weight: 200;
+    margin-bottom: 15px;
+}
+
+/* Link visibility of icon to validation state */
+form .glyphicon {
+  visibility: hidden;
+}
+
+.has-error .glyphicon {
+  visibility: visible;
+}
+
+/* Animate button spinner */
 .spin {
   animation: rotation 5s infinite linear;
   -webkit-animation: rotation 5s infinite linear;
@@ -94,7 +112,7 @@ body {
   to { -webkit-transform: scale( 1 ) rotate( 360deg ); }
 }
 
-@keyframes rotation {
+@-ms-keyframes rotation {
   from { -ms-transform: scale( 1 ) rotate( 0deg ); }
   to { -ms-transform: scale( 1 ) rotate( 360deg ); }
 }

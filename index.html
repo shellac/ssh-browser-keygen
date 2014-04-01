@@ -27,7 +27,7 @@
 
     <div class="container">
       <div class="header">
-        <h3 class="text-muted">ssh online keygen</h3>
+        <h3 class="text-muted">SSH key generation</h3>
       </div>
 
       <div class="jumbotron">
@@ -37,23 +37,34 @@
         browser. We hold <strong>no copies</strong> of either your keys or passphrase.
         </p>
 
-        <p>
-        	<span class="col-md-6">Enter passphrase:</span>
-        	<input id="passphrase1" type="password" placeholder="passphrase">
-        </p>
-        <p>
-        	<span class="col-md-6">Enter passphrase again:</span>
-        	<input id="passphrase2" type="password" placeholder="passphrase">
-        </p>
-        <p id="passphraseFeedback"></p>
-        <p>
-        	<span class="col-md-6">Key size:</span>
-  			<select id="keysize">
+        <form class="form-horizontal" role="form">
+        <div id="keygenform" class="form-group has-feedback">
+        <div>
+        	<p id="passphraseFeedback" class="help-block"></p>
+        	<label class="control-label col-md-5" for="passphrase1">Enter passphrase:</label>
+        	<div class="col-md-6">
+        	<input id="passphrase1" type="password" placeholder="passphrase" class="form-control">
+        	<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+        	</div>
+        </div>
+        <div>
+        	<label class="control-label col-md-5" for="passphrase2">Enter passphrase:</label>
+        	<div class="col-md-6">
+        	<input id="passphrase2" type="password" placeholder="passphrase" class="form-control">
+        	<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+        	</div>
+        </div>
+        <div>
+        	<label class="control-label col-md-5" for="keysize">Key size:</label>
+        	<div class="col-md-6">
+        	<select id="keysize" class="form-control">
     			<option selected>2048</option>
     			<option>4096</option>
   			</select>
-  			bits
-		</p>
+        	</div>
+        </div>
+        </div>
+		</form>
 		<p></p>
         <p>
         	<a class="btn btn-lg btn-success" href="#" role="button" id="create">
@@ -84,10 +95,12 @@ function validate() {
   var pp1 = document.getElementById('passphrase1').value;
   var pp2 = document.getElementById('passphrase2').value;
   if (pp1.length < requiredLength || pp1 !== pp2) {
-    document.getElementById("passphraseFeedback").innerHTML = "Passphrases must be at least " + requiredLength + " characters, and match";
+    document.getElementById("passphraseFeedback").innerHTML = "Passphrases must be at least " + requiredLength + " characters long, and match";
+    document.getElementById("keygenform").className = 'form-group has-error has-feedback';
     return false;
   } else {
     document.getElementById("passphraseFeedback").innerHTML = '';
+    document.getElementById("keygenform").className = 'form-group has-feedback';
     return true;
   }
 }
